@@ -11,6 +11,7 @@ plugins {
 
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.hilt.gradle)
 }
 
 if (Config.includeTelemetry) {
@@ -186,6 +187,11 @@ dependencies {
     implementation(projects.presentationCore)
     implementation(projects.presentationWidget)
     implementation(projects.telemetry)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kapt(libs.hilt.android.compiler)
 
     // Compose
     implementation(libs.androidx.activity.compose)
