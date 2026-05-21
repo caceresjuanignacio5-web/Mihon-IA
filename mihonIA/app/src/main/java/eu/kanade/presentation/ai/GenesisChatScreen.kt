@@ -30,7 +30,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.hilt.getScreenModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 import kotlinx.coroutines.launch
 import mihon.feature.ai.chat.ChatResult
 
@@ -44,7 +45,7 @@ class GenesisChatScreen : Screen() {
     
     @Composable
     override fun Content() {
-        val screenModel = rememberScreenModel { GenesisChatScreenModel() }
+        val screenModel = viewModel<GenesisChatScreenModel>()
         val state by screenModel.state.collectAsState()
         val messages by screenModel.messages.collectAsState()
         val listState = rememberLazyListState()

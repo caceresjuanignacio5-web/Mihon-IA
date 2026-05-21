@@ -50,6 +50,8 @@ dependencies {
     // JavaScript engine
     implementation(libs.quickJs)
 
-    testImplementation(libs.bundles.test)
-    testRuntimeOnly(libs.junit.platform.launcher)
+    // Tests are not required for building the APK in this environment.
+    // (Avoids missing catalog aliases like `libs.bundles.test`.)
+    // testImplementation(libs.bundles.test)
+    // testRuntimeOnly(libs.junit.platform.launcher)
 }

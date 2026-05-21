@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.samWithReceiver)
     alias(libs.plugins.spotless)
+    // alias(libs.plugins.hilt.gradle)
     `java-gradle-plugin`
 }
 

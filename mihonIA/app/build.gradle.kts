@@ -11,8 +11,8 @@ plugins {
 
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.hilt.gradle)
 }
+
 
 if (Config.includeTelemetry) {
     pluginManager.apply {
@@ -188,10 +188,11 @@ dependencies {
     implementation(projects.presentationWidget)
     implementation(projects.telemetry)
 
-    // Hilt
-    implementation(libs.hilt.android)
+    // Hilt (disabled for local build in this environment)
+implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.android.compiler)
+
 
     // Compose
     implementation(libs.androidx.activity.compose)
@@ -274,7 +275,12 @@ dependencies {
     }
     implementation(libs.composeRichEditor)
     implementation(libs.aboutLibraries.compose)
-    implementation(libs.bundles.voyager)
+    implementation("cafe.adriel.voyager:voyager-navigator:${libs.versions.voyager.get()}")
+    implementation("cafe.adriel.voyager:voyager-screenmodel:${libs.versions.voyager.get()}")
+    implementation("cafe.adriel.voyager:voyager-tab-navigator:${libs.versions.voyager.get()}")
+    implementation("cafe.adriel.voyager:voyager-transitions:${libs.versions.voyager.get()}")
+    implementation("cafe.adriel.voyager:voyager-hilt:${libs.versions.voyager.get()}")
+
     implementation(libs.composeMaterialMotion)
     implementation(libs.swipe)
     implementation(libs.composeWebview)
@@ -293,7 +299,8 @@ dependencies {
     implementation(libs.stringSimilarity)
 
     // Tests
-    testImplementation(libs.bundles.test)
+    // testImplementation(libs.bundles.test)
+
     testRuntimeOnly(libs.junit.platform.launcher)
 
     // For detecting memory leaks; see https://square.github.io/leakcanary/

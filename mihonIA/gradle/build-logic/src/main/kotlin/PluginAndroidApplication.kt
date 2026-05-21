@@ -11,6 +11,7 @@ class PluginAndroidApplication : Plugin<Project> {
         plugins {
             alias(libs.plugins.android.application)
             alias(mihonx.plugins.android.base)
+            alias(libs.plugins.hilt.gradle)
         }
     }
 }
